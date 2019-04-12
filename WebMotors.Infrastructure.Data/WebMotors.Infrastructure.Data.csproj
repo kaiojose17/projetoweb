@@ -61,8 +61,14 @@
     <Compile Include="Migrations\201904110519452_Migration2.Designer.cs">
       <DependentUpon>201904110519452_Migration2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904120321131_teste.cs" />
+    <Compile Include="Migrations\201904120321131_teste.Designer.cs">
+      <DependentUpon>201904120321131_teste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\WebMotorsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebMotors.Domain\WebMotors.Domain.csproj">
@@ -72,7 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EntityConfig\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -87,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904110519452_Migration2.resx">
       <DependentUpon>201904110519452_Migration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904120321131_teste.resx">
+      <DependentUpon>201904120321131_teste.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
