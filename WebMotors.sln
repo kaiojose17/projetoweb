@@ -25,6 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPi", "WebAPi", "{6376E6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMotors.WebApi", "WebMotors.WebApi\WebMotors.WebApi.csproj", "{9EF3B7A8-DB85-4D34-A518-3A0E159DCC71}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{5BB99C17-CB50-491D-8A35-603986AC144A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMotors.Commom", "WebMotors.Commom\WebMotors.Commom.csproj", "{5F3FFA75-300F-4A21-B60D-C51472561AD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,10 @@ Global
 		{9EF3B7A8-DB85-4D34-A518-3A0E159DCC71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EF3B7A8-DB85-4D34-A518-3A0E159DCC71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EF3B7A8-DB85-4D34-A518-3A0E159DCC71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F3FFA75-300F-4A21-B60D-C51472561AD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F3FFA75-300F-4A21-B60D-C51472561AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F3FFA75-300F-4A21-B60D-C51472561AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F3FFA75-300F-4A21-B60D-C51472561AD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +70,7 @@ Global
 		{8414D7C7-6243-44E1-9024-B7CE19A64A3C} = {FEC70519-CA93-47A1-A7AC-18F93F468ED4}
 		{D251537E-4A22-4E72-8565-61D6FB6843D4} = {F17AD07F-6022-4B05-9C4F-C213AA97537A}
 		{9EF3B7A8-DB85-4D34-A518-3A0E159DCC71} = {6376E69E-9B04-4DAB-A496-E0EEA1D36B75}
+		{5F3FFA75-300F-4A21-B60D-C51472561AD7} = {5BB99C17-CB50-491D-8A35-603986AC144A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D46A6DD7-C7BF-438C-BF1F-C2783ECB6999}

@@ -145,9 +145,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiBase\ApiBaseController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AnuncioWebMotorsController.cs" />
+    <Compile Include="Controllers\WebMotorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -166,7 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\AnuncioWebMotors\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -175,6 +175,10 @@
     <ProjectReference Include="..\WebMotors.Application\WebMotors.Application.csproj">
       <Project>{D251537E-4A22-4E72-8565-61D6FB6843D4}</Project>
       <Name>WebMotors.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebMotors.Commom\WebMotors.Commom.csproj">
+      <Project>{5F3FFA75-300F-4A21-B60D-C51472561AD7}</Project>
+      <Name>WebMotors.Commom</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebMotors.Domain\WebMotors.Domain.csproj">
       <Project>{A31D3C33-D913-41B4-8D28-70BADAEB1476}</Project>
