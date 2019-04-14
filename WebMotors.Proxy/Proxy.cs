@@ -10,6 +10,7 @@ namespace WebMotors.Proxy
     public class Proxy : IProxy
     {
         private static string _baseAddress;
+        private static string _baseAddressApi;
         private HttpHelper _httpHelper;
 
         protected HttpHelper HttpHelper
@@ -18,7 +19,7 @@ namespace WebMotors.Proxy
             {
                 if (_httpHelper == null)
                 {
-                    _httpHelper = new HttpHelper(_baseAddress);
+                    _httpHelper = new HttpHelper(_baseAddress, _baseAddressApi);
                 }
 
                 return _httpHelper;
@@ -28,8 +29,9 @@ namespace WebMotors.Proxy
         public Proxy()
         {
             _baseAddress = ConfigurationManager.AppSettings["WebApiAddress"];
+            _baseAddressApi = ConfigurationManager.AppSettings["WebApiAddressApi"];
 
-            if (string.IsNullOrEmpty(_baseAddress))
+            if (string.IsNullOrEmpty(_baseAddress) || string.IsNullOrEmpty(_baseAddressApi))
                 throw new Exception("Erro ao carregar o endereço local");
         }
 
@@ -40,7 +42,7 @@ namespace WebMotors.Proxy
     {
         public TEntity Add(TEntity obj)
         {
-            var uri = ApiConstants.Rotas.WebApi.Post;
+            var uri = $"{ApiConstants.Rotas.WebApi.BaseUri}/{ApiConstants.Rotas.WebApi.Post}";
 
             var response = HttpHelper.PostAsync<TEntity>(uri, obj);
 
@@ -54,7 +56,7 @@ namespace WebMotors.Proxy
 
         public IEnumerable<TEntity> GetAll()
         {
-            var uri = ApiConstants.Rotas.WebApi.Get;
+            var uri = $"{ApiConstants.Rotas.WebApi.BaseUri}/{ApiConstants.Rotas.WebApi.Get}";
 
             var response = HttpHelper.GetAsync<TEntity[]>(uri);
 
@@ -63,7 +65,7 @@ namespace WebMotors.Proxy
 
         public TEntity GetById(int id)
         {
-            var uri = string.Format("{0}/{1}", ApiConstants.Rotas.WebApi.Get, id);
+            var uri = $"{ApiConstants.Rotas.WebApi.BaseUri}/{id}";
 
             var response = HttpHelper.GetAsync<TEntity>(uri);
 
@@ -72,7 +74,7 @@ namespace WebMotors.Proxy
 
         public TEntity Remove(TEntity obj)
         {
-            var uri = ApiConstants.Rotas.WebApi.Delete;
+            var uri = $"{ApiConstants.Rotas.WebApi.BaseUri}/{ApiConstants.Rotas.WebApi.Delete}";
 
             var response = HttpHelper.PostAsync<TEntity>(uri, obj);
 
@@ -81,7 +83,7 @@ namespace WebMotors.Proxy
 
         public TEntity Update(TEntity obj)
         {
-            var uri = ApiConstants.Rotas.WebApi.Put;
+            var uri = $"{ApiConstants.Rotas.WebApi.BaseUri}/{ApiConstants.Rotas.WebApi.Put}";
 
             var response = HttpHelper.PostAsync<TEntity>(uri, obj);
 

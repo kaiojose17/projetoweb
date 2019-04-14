@@ -19,9 +19,9 @@ namespace WebMotors.Domain.Services
             _repository = repository;
         }
 
-        public void Add(TEntity obj)
+        public TEntity Add(TEntity obj)
         {
-            _repository.Add(obj);
+            return _repository.Add(obj);
         }       
 
         public IEnumerable<TEntity> GetAll()
@@ -34,14 +34,14 @@ namespace WebMotors.Domain.Services
             return _repository.GetById(id);
         }
 
-        public void Remove(TEntity obj)
+        public TEntity Remove(TEntity obj)
         {
-            _repository.Remove(obj);
+            return _repository.Remove(obj);
         }
 
-        public void Update(TEntity obj)
+        public TEntity Update(TEntity obj)
         {
-            _repository.Update(obj);
+            return _repository.Update(obj);
         }
 
         public void Dispose()

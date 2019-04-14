@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using WebMotors.Domain.Entities.DTO;
 
 namespace WebMotors.MVC.ViewModels
 {
@@ -31,5 +33,8 @@ namespace WebMotors.MVC.ViewModels
 
         [Required(ErrorMessage = "Preencha o campo Observacao")]
         public string Observacao { get; set; }
+
+        [NotMapped]
+        public IEnumerable<MakeDTO> Makes { get; set; }
     }
 }

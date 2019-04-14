@@ -34,6 +34,8 @@ namespace WebMotors.MVC.Controllers
         // GET: AnuncioWebMotors/Create
         public ActionResult Create()
         {
+            var marcas = _anuncioWebMotorsProxy.GetMakes();
+            ViewBag.Marcas = marcas;
             return View();
         }
 

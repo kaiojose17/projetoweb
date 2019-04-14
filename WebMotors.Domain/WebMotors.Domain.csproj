@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\AnuncioWebMotors.cs" />
+    <Compile Include="Entities\DTO\MakeDTO.cs" />
+    <Compile Include="Entities\DTO\ModelDTO.cs" />
+    <Compile Include="Entities\DTO\VersionDTO.cs" />
     <Compile Include="Interface\Repositories\IRepositoryBase.cs" />
     <Compile Include="Interface\Repositories\IWebMotorsRepository.cs" />
     <Compile Include="Interface\Services\IServiceBase.cs" />

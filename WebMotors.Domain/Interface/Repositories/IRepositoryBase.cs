@@ -9,11 +9,11 @@ namespace WebMotors.Domain.Interface
     public interface IRepositoryBase<TEntity>
         where TEntity : class
     {
-        void Add(TEntity obj);
+        TEntity Add(TEntity obj);
         TEntity GetById(int id);
         IEnumerable<TEntity> GetAll();
-        void Update(TEntity obj);
-        void Remove(TEntity obj);
+        TEntity Update(TEntity obj);
+        TEntity Remove(TEntity obj);
         void Dispose();
     }
 }

@@ -13,7 +13,7 @@ namespace WebMotors.Infrastructure.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201904140326382_Migration"; }
+            get { return "201904140354377_Migration"; }
         }
         
         string IMigrationMetadata.Source

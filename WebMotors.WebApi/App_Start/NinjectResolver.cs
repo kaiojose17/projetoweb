@@ -2,14 +2,14 @@
 using Ninject.Extensions.ChildKernel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http.Dependencies;
 using WebMotors.Domain;
 using WebMotors.Domain.Interface;
 using WebMotors.Domain.Interface.Services;
 using WebMotors.Domain.Services;
 using WebMotors.Infrastructure.Data.Repositories;
+using WebMotors.Proxy;
+using WebMotors.Proxy.Interface;
 
 namespace WebMotors.WebApi.App_Start
 {
@@ -43,6 +43,9 @@ namespace WebMotors.WebApi.App_Start
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<IWebMotorsRepository>().To<WebMotorsRepository>();
+
+            kernel.Bind(typeof(IProxy<>)).To(typeof(IProxy<>));
+            kernel.Bind(typeof(IAnuncioWebMotorsProxy)).To(typeof(AnuncioWebMotorsProxy));
 
             return kernel;
         }

@@ -13,10 +13,12 @@ namespace WebMotors.Infrastructure.Data.Repositories
     {
         protected WebMotorsContext Db = new WebMotorsContext();
 
-        public void Add(TEntity obj)
+        public TEntity Add(TEntity obj)
         {
             Db.Set<TEntity>().Add(obj);
             Db.SaveChanges();
+
+            return obj;
         }        
 
         public IEnumerable<TEntity> GetAll()
@@ -29,16 +31,19 @@ namespace WebMotors.Infrastructure.Data.Repositories
             return Db.Set<TEntity>().Find(id);
         }
 
-        public void Remove(TEntity obj)
+        public TEntity Remove(TEntity obj)
         {
-            Db.Set<TEntity>().Remove(obj);
+            Db.Entry<TEntity>(obj).State = System.Data.Entity.EntityState.Deleted ;
             Db.SaveChanges();
+            return obj;
         }
 
-        public void Update(TEntity obj)
+        public TEntity Update(TEntity obj)
         {
             Db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
             Db.SaveChanges();
+
+            return obj;
         }
 
         public void Dispose()

@@ -22,7 +22,10 @@ namespace WebMotors.Commom
 
                 public class Recursos
                 {
-                    public const string GetbyId = BaseUri + "{id}";
+                    public const string GetbyId = "{id}";
+                    public const string Make = "make";
+                    public const string Model = "model";
+                    public const string Version = "varsion";
                 }
             }
         }
