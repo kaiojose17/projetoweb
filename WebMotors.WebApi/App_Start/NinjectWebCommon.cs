@@ -10,13 +10,13 @@ namespace WebMotors.WebApi.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using WebMotors.Application;
-    using WebMotors.Application.Interface;
+    using Ninject.Web.Common.WebHost;
     using WebMotors.Domain;
     using WebMotors.Domain.Interface;
     using WebMotors.Domain.Interface.Services;
     using WebMotors.Domain.Services;
     using WebMotors.Infrastructure.Data.Repositories;
+    using WebMotors.WebApi.ApiBase;
 
     public static class NinjectWebCommon 
     {
@@ -68,14 +68,11 @@ namespace WebMotors.WebApi.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(AppServiceBase<>));
-            kernel.Bind<IWebMotorsServiceBase>().To<WebMotorsAppService>();
+            //kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
+            //kernel.Bind<IWebMotorsService>().To<WebMotorsService>();
 
-            kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
-            kernel.Bind<IWebMotorsService>().To<WebMotorsService>();
-
-            kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
-            kernel.Bind<IWebMotorsRepository>().To<WebMotorsRepository>();
+            //kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
+            //kernel.Bind<IWebMotorsRepository>().To<WebMotorsRepository>();
         }        
     }
 }

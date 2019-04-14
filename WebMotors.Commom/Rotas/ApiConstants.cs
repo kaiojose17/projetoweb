@@ -22,10 +22,7 @@ namespace WebMotors.Commom
 
                 public class Recursos
                 {
-                    public const string DeleteById = BaseUri + "{id}";
-                    public const string PutById = BaseUri + "{id}";
                     public const string GetbyId = BaseUri + "{id}";
-
                 }
             }
         }

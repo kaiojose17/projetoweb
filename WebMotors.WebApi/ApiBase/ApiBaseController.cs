@@ -9,7 +9,8 @@ using System.Web.Http;
 
 namespace WebMotors.WebApi.ApiBase
 {
-    public class ApiBaseController : ApiController
+    public interface IApiBaseController { }
+    public class ApiBaseController : ApiController, IApiBaseController
     {
         protected async Task<HttpResponseMessage> GetHttpResponseAsync(HttpRequestMessage request, Func<HttpResponseMessage> codeToExecute)
         {

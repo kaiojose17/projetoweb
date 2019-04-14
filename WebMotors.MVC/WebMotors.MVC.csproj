@@ -59,13 +59,13 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\Ninject.MVC5.3.2.0.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -187,7 +187,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -224,10 +226,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebMotors.Application\WebMotors.Application.csproj">
-      <Project>{d251537e-4a22-4e72-8565-61d6fb6843d4}</Project>
-      <Name>WebMotors.Application</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebMotors.Domain\WebMotors.Domain.csproj">
       <Project>{a31d3c33-d913-41b4-8d28-70badaeb1476}</Project>
       <Name>WebMotors.Domain</Name>
@@ -235,6 +233,10 @@
     <ProjectReference Include="..\WebMotors.Infrastructure.Data\WebMotors.Infrastructure.Data.csproj">
       <Project>{8414D7C7-6243-44E1-9024-B7CE19A64A3C}</Project>
       <Name>WebMotors.Infrastructure.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebMotors.Proxy\WebMotors.Proxy.csproj">
+      <Project>{E2DAB591-5DB5-46A0-87EF-4293991DCEE3}</Project>
+      <Name>WebMotors.Proxy</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

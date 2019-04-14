@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WebMotors.WebApi.App_Start;
 
 namespace WebMotors.WebApi
 {
@@ -10,6 +11,7 @@ namespace WebMotors.WebApi
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.DependencyResolver = new NinjectResolver();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -19,6 +21,9 @@ namespace WebMotors.WebApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var formatters = GlobalConfiguration.Configuration.Formatters;
+            formatters.Remove(formatters.XmlFormatter);
         }
     }
 }

@@ -1,35 +1,31 @@
 ﻿using AutoMapper;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using WebMotors.Application.Interface;
 using WebMotors.Domain.Entities;
 using WebMotors.MVC.ViewModels;
+using WebMotors.Proxy.Interface;
 
 namespace WebMotors.MVC.Controllers
 {
     public class AnuncioWebMotorsController : Controller
     {
-        private readonly IWebMotorsServiceBase _webMotorsServiceBase;
+        private readonly IAnuncioWebMotorsProxy _anuncioWebMotorsProxy;
 
-        public AnuncioWebMotorsController(IWebMotorsServiceBase webMotorsServiceBase)
+        public AnuncioWebMotorsController(IAnuncioWebMotorsProxy anuncioWebMotorsProxy)
         {
-            _webMotorsServiceBase = webMotorsServiceBase;
+            _anuncioWebMotorsProxy = anuncioWebMotorsProxy;
         }
-
         // GET: AnuncioWebMotors
         public ActionResult Index()
         {
-            var viewModel = Mapper.Map<IEnumerable<AnuncioWebMotors>, IEnumerable<AnuncioWebMotorsViewModel>>(_webMotorsServiceBase.GetAll());
+            var viewModel = Mapper.Map<IEnumerable<AnuncioWebMotors>, IEnumerable<AnuncioWebMotorsViewModel>>(_anuncioWebMotorsProxy.GetAll());
             return View(viewModel);
         }
 
         // GET: AnuncioWebMotors/Details/5
         public ActionResult Details(int id)
         {
-            var domain = _webMotorsServiceBase.GetById(id);
+            var domain = _anuncioWebMotorsProxy.GetById(id);
             var viewModel = Mapper.Map<AnuncioWebMotors, AnuncioWebMotorsViewModel>(domain);
 
             return View(viewModel);
@@ -49,7 +45,7 @@ namespace WebMotors.MVC.Controllers
             {
                 var domain = Mapper.Map<AnuncioWebMotorsViewModel, AnuncioWebMotors>(anuncioWebMotors);
 
-                _webMotorsServiceBase.Add(domain);
+                _anuncioWebMotorsProxy.Add(domain);
 
                 return RedirectToAction("Index");
             }
@@ -62,7 +58,7 @@ namespace WebMotors.MVC.Controllers
         // GET: AnuncioWebMotors/Edit/5
         public ActionResult Edit(int id)
         {
-            var domain = _webMotorsServiceBase.GetById(id);
+            var domain = _anuncioWebMotorsProxy.GetById(id);
             var viewModel = Mapper.Map<AnuncioWebMotors, AnuncioWebMotorsViewModel>(domain);
 
             return View(viewModel);
@@ -75,7 +71,7 @@ namespace WebMotors.MVC.Controllers
             try
             {
                 var domain = Mapper.Map<AnuncioWebMotorsViewModel, AnuncioWebMotors>(viewModel);
-                _webMotorsServiceBase.Update(domain);
+                _anuncioWebMotorsProxy.Update(domain);
 
                 return RedirectToAction("Index");
             }
@@ -88,7 +84,7 @@ namespace WebMotors.MVC.Controllers
         // GET: AnuncioWebMotors/Delete/5
         public ActionResult Delete(int id)
         {
-            var domain = _webMotorsServiceBase.GetById(id);
+            var domain = _anuncioWebMotorsProxy.GetById(id);
             var viewModel = Mapper.Map<AnuncioWebMotors, AnuncioWebMotorsViewModel>(domain);
 
             return View(viewModel);
@@ -100,8 +96,8 @@ namespace WebMotors.MVC.Controllers
         {
             try
             {
-                var domain = _webMotorsServiceBase.GetById(id);
-                _webMotorsServiceBase.Remove(domain);
+                var domain = _anuncioWebMotorsProxy.GetById(id);
+                _anuncioWebMotorsProxy.Remove(domain);
 
                 return RedirectToAction("Index");
             }
