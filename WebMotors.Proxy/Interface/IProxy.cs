@@ -15,6 +15,5 @@ namespace WebMotors.Proxy.Interface
         IEnumerable<TEntity> GetAll();
         TEntity Update(TEntity obj);
         TEntity Remove(TEntity obj);
-        void Dispose();
     }
 }

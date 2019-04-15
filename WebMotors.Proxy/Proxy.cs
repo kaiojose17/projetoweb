@@ -49,11 +49,6 @@ namespace WebMotors.Proxy
             return response;
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<TEntity> GetAll()
         {
             var uri = $"{ApiConstants.Rotas.WebApi.BaseUri}/{ApiConstants.Rotas.WebApi.Get}";

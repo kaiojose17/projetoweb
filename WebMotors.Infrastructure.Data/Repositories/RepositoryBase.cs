@@ -8,7 +8,7 @@ using WebMotors.Infrastructure.Data.Context;
 
 namespace WebMotors.Infrastructure.Data.Repositories
 {
-    public class RepositoryBase<TEntity> : IDisposable, IRepositoryBase<TEntity>
+    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
         where TEntity : class
     {
         protected WebMotorsContext Db = new WebMotorsContext();
@@ -44,11 +44,6 @@ namespace WebMotors.Infrastructure.Data.Repositories
             Db.SaveChanges();
 
             return obj;
-        }
-
-        public void Dispose()
-        {
-
         }
     }
 }

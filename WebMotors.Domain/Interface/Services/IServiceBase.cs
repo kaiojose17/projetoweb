@@ -14,6 +14,5 @@ namespace WebMotors.Domain.Interface.Services
         IEnumerable<TEntity> GetAll();
         TEntity Update(TEntity obj);
         TEntity Remove(TEntity obj);
-        void Dispose();
     }
 }
