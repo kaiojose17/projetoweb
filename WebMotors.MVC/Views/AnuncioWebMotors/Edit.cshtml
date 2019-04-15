@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>AnuncioWebMotorsViewModel</h4>
         <hr />
@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Marca, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Marca, ViewBag.Marcas as List<SelectListItem>, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Modelo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Modelo, new SelectList(string.Empty, "Value", "Text"), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Modelo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Versao, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Versao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Versao, new SelectList(string.Empty, "Value", "Text"), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Versao, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -76,6 +76,63 @@
 <div>
     @Html.ActionLink("Voltar ao Inicio", "Index")
 </div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#Modelo").prop('disabled', true);
+        $("#Versao").prop('disabled', true);
+
+        //listando o dropdown de marcas
+        $("#Marca").change(function () {
+            $("#Modelo").empty();
+            $("#Versao").empty();
+
+            var makeId = $("#Marca").find('option:selected').text().split('-')[0].trim();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetModel")?makeId=' + makeId,
+                dataType: 'json',
+                success: function (model) {
+
+                    //Listando o dropdpwn de modelos
+                    $.each(model, function (i, model) {
+                        $("#Modelo").append('<option value="' + model.Value + '">' + model.Text + '</option>');
+                    });
+
+                    $("#Modelo").prop('disabled', false);
+                    $("#Versao").prop('disabled', true);
+
+                    //Listando o dropdown de versoes
+                    $("#Modelo").change(function () {
+                        $("#Versao").empty();
+                        var modelId = $("#Modelo").find('option:selected').text().split('-')[0].trim();
+                        $.ajax({
+                            type: 'GET',
+                            url: '@Url.Action("GetVersion")?modelId=' + modelId,
+                            dataType: 'json',
+                            success: function (version) {
+                                $.each(version, function (i, version) {
+                                    $("#Versao").append('<option value="' + version.Value + '">' + version.Text + '</option>');
+                                });
+                                $("#Versao").prop('disabled', false);
+                            },
+                            error: function (ex) {
+                                alert('Erro ao listar as versoes: ' + ex);
+                            }
+                        });
+                    });
+                },
+                error: function (ex) {
+                    alert('Erro ao listar os modelos: ' + ex);
+                }
+            });
+            return false;
+        });
+    });
+</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

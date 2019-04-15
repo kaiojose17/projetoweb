@@ -32,7 +32,7 @@ namespace WebMotors.Proxy
 
         public IEnumerable<VersionDTO> GetVersions(int modelId)
         {
-            var uri = $"{ApiConstants.Rotas.WebApi.Recursos.Version}?ModelID={modelId}";
+            var uri = $"{ApiConstants.Rotas.WebApi.Recursos.Version}?ModelId={modelId}";
 
             var response = HttpHelper.ExternalGetAsync<VersionDTO[]>(uri);
 

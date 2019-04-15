@@ -35,7 +35,16 @@ namespace WebMotors.MVC.Controllers
         public ActionResult Create()
         {
             var marcas = _anuncioWebMotorsProxy.GetMakes();
-            ViewBag.Marcas = marcas;
+
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem { Text = "Selecione", Value = "0"});
+
+            foreach (var marca in marcas)
+            {
+                listItems.Add(new SelectListItem { Text = $"{marca.Id} - {marca.Name}", Value = marca.Name });
+                ViewBag.Marcas = listItems;
+            }
+
             return View();
         }
 
@@ -62,6 +71,16 @@ namespace WebMotors.MVC.Controllers
         {
             var domain = _anuncioWebMotorsProxy.GetById(id);
             var viewModel = Mapper.Map<AnuncioWebMotors, AnuncioWebMotorsViewModel>(domain);
+            var marcas = _anuncioWebMotorsProxy.GetMakes();
+
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem { Text = "Selecione", Value = "0" });
+
+            foreach (var marca in marcas)
+            {
+                listItems.Add(new SelectListItem { Text = $"{marca.Id} - {marca.Name}", Value = marca.Name });
+                ViewBag.Marcas = listItems;
+            }
 
             return View(viewModel);
         }
@@ -107,6 +126,39 @@ namespace WebMotors.MVC.Controllers
             {
                 return View();
             }
+        }
+
+        public JsonResult GetModel(int makeId)
+        {
+            var models = _anuncioWebMotorsProxy.GetModels(makeId);
+
+
+            var listItens = new List<SelectListItem>();
+
+            listItens.Add(new SelectListItem { Text = "Selecione", Value = "0" });
+
+            foreach (var modelo in models)
+            {
+                listItens.Add(new SelectListItem { Text = $"{modelo.Id} - {modelo.Name}", Value = modelo.Name });
+            }
+
+            return Json(new SelectList(listItens, "Value", "Text"), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetVersion(int modelId)
+        {
+            var versions = _anuncioWebMotorsProxy.GetVersions(modelId);
+
+            var listItens = new List<SelectListItem>();
+
+            listItens.Add(new SelectListItem { Text = "Selecione", Value = "0" });
+
+            foreach (var version in versions)
+            {
+                listItens.Add(new SelectListItem { Text = $"{version.Id} - {version.Name}", Value = version.Name });
+            }
+
+            return Json(new SelectList(listItens, "Value", "Text"), JsonRequestBehavior.AllowGet);
         }
     }
 }

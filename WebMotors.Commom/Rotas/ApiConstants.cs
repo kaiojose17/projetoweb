@@ -25,7 +25,7 @@ namespace WebMotors.Commom
                     public const string GetbyId = "{id}";
                     public const string Make = "make";
                     public const string Model = "model";
-                    public const string Version = "varsion";
+                    public const string Version = "version";
                 }
             }
         }
